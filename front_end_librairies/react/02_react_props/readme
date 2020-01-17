@@ -1,0 +1,15 @@
+Basics of props handling in React :
+ 
+	Pass Props to a Stateless Functional Component
+
+	Pass an Array as Props
+
+	Use Default Props
+
+	Override Default Props
+
+	Use PropTypes to Define the Props You Expect
+
+	Access Props Using this.props
+
+	Review Using Props with Stateless Functional Components
