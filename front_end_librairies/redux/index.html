@@ -8,10 +8,32 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.5/redux.js" integrity="sha256-N8dNe7UvR0kSfEBSJiwOPLBEyfWCd/aaQL2pdWqDJwE=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.5/redux.min.js" integrity="sha256-7nQo8jg3+LLQfXy/aqP5D6XtqDQRODTO18xBdHhQow4=" crossorigin="anonymous"></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux-thunk/2.3.0/redux-thunk.js" integrity="sha256-+RXtfsz84GKahl+EP9tH2pZEE/OKuNykRm3nx3gm/nc=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux-thunk/2.3.0/redux-thunk.min.js" integrity="sha256-2xw5MpPcdu82/nmW2XQ6Ise9hKxziLWV2GupkS9knuw=" crossorigin="anonymous"></script>
+
     <script type="text/babel">
         
         {/* 
+            
+            Index :
+
+                Create a Redux Store : 40
+                Get State from the Redux Store  : 81
+                Define a Redux Action : 98
+                Define an Action Creator : 121
+                Dispatch an Action Event : 140
+                Handle an Action in the Store : 162
+                Use a Switch Statement to Handle Multiple Actions : 202
+                Use const for Action Types : 211
+                Register a Store Listener : 266
+                Combine Multiple Reducers : 312
+                Send Action Data to the Store : 388
+                Use Middleware to Handle Asynchronous Actions : 429
+                Write a Counter with Redux : 513
+                Never Mutate State : 545
+                Use the Spread Operator on Arrays : 564
+                Remove an Item from an Array : 626
+                Copy an Object with Object.assign : 668
 
             ///////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -41,7 +63,7 @@
 
         var store = Redux.createStore(reducer);
         
-        console.log(`Here's the Redux store object :`);
+        console.log(`\nHere's a Redux store object :`);
         console.log(store)
 
         {/* 
@@ -109,7 +131,7 @@
             return action
         }
 
-        console.log("This is an action sent by an action creator :")
+        console.log("\nThis is an action sent by an action creator :")
         console.log(loginAction())
         
         {/* 
@@ -167,7 +189,7 @@
 
         store = Redux.createStore(reducer);
 
-        console.log("Here is a store's default state :")
+        console.log("\nHere is a store's default state :")
         console.log(store.getState())
 
         store.dispatch(loginAction());
@@ -186,7 +208,7 @@
             We want to have a state representation for when users are logged in and when they are logged out. 
             We represent this with a single state object with the property authenticated. 
             We also need action creators that create actions corresponding to user login and user logout, along with the action objects themselves.
-        
+
         Redux: Use const for Action Types
 
             A common practice when working with Redux is to assign action types as read-only constants, 
@@ -228,7 +250,7 @@
             }
         }
 
-        console.log("Here's a store's default state, updated by a login user action and updated again by a logout user action :")
+        console.log("\nHere's a store's default state, updated by a login user action and updated again by a logout user action :")
 
         console.log(store.getState());
 
@@ -272,7 +294,7 @@
         
         store.subscribe(increment);
         
-        console.log("Incrementation of a store's state with a callback function subscribed to this store :")
+        console.log("\nIncrementation of a store's state with a callback function subscribed to this store :")
         console.log(store.getState())
 
         store.dispatch({type: ADD})
@@ -283,6 +305,412 @@
 
         store.dispatch({type: ADD})
         console.log(store.getState())
+
+        {/* 
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////
+
+        Redux: Combine Multiple Reducers
+
+            When the state of your app begins to grow more complex, it may be tempting to divide state into multiple pieces. 
+            Instead, remember the first principle of Redux: all app state is held in a single state object in the store. 
+            Therefore, Redux provides reducer composition as a solution for a complex state model. 
+            We define multiple reducers to handle different pieces of your application's state, then compose these reducers together into one root reducer. 
+            The root reducer is then passed into the Redux createStore() method.
+
+            In order to let us combine multiple reducers together, Redux provides the combineReducers() method. 
+            This method accepts an object as an argument in which we define properties which associate keys to specific reducer functions. 
+            The name you give to the keys will be used by Redux as the name for the associated piece of state.
+
+            Typically, it is a good practice to create a reducer for each piece of application state when they are distinct or unique in some way. 
+            For example, in a note-taking app with user authentication, 
+            one reducer could handle authentication while another handles the text and notes that the user is submitting. 
+            For such an application, we might write the combineReducers() method like this:
+
+                const rootReducer = Redux.combineReducers({
+                auth: authenticationReducer,
+                notes: notesReducer
+                });
+
+            Now, the key notes will contain all of the state associated with our notes and handled by our notesReducer. 
+            This is how multiple reducers can be composed to manage more complex application state. 
+            In this example, the state held in the Redux store would then be a single object containing auth and notes properties.
+ 
+
+        */}
+        
+        const INCREMENT = 'INCREMEMENT'
+        const DECREMENT = 'DECREMENT'
+
+        var counterReducer = (state = 0, action) => {
+            switch(action.type) {
+                case INCREMENT:
+                    return state + 1;
+                    break;
+                case DECREMENT:
+                    return state - 1;
+                    break;
+                default:
+                    return state;
+            }
+        }
+
+        var authReducer = (state = {authenticated: false}, action) => {
+            switch (action.type){
+                case LOGIN:
+                    return { authenticated: true };
+                    break;
+                case LOGOUT: 
+                    return { athenticated: false };
+                    break;
+                default: 
+                    return state;
+            }
+        }
+
+        var rootReducer = Redux.combineReducers({
+            auth: authReducer,
+            count: counterReducer
+        })
+
+        store = Redux.createStore(rootReducer);
+
+        store.dispatch({type: INCREMENT})
+        store.dispatch({type: LOGOUT})
+
+        console.log("\nHere's a store state depending on combined reducers :")
+        console.log(store.getState())
+
+        {/* 
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////
+
+        Redux: Send Action Data to the Store
+
+            By now we've learned how to dispatch actions to the Redux store, but so far these actions have not contained any information other than a type. 
+            We can also send specific data along with your actions. 
+            In fact, this is very common because actions usually originate from some user interaction and tend to carry some data with them. 
+            The Redux store often needs to know about this data.
+ 
+        */}
+
+        const ADD_NOTE = 'ADD_NOTE';
+
+        var notesReducer = (state = 'Initial State', action) => {
+            switch(action.type) {
+                case ADD_NOTE: 
+                    return action.text;
+                    break;
+                default: 
+                    return state;
+            }
+        }
+
+        var addNoteText = (note) => {
+            return {
+                type: ADD_NOTE,
+                text: note
+            }
+        }
+
+        console.log("\nExample of action data sent to a store :")
+
+        store = Redux.createStore(notesReducer);
+
+        console.log(store.getState());
+
+        store.dispatch(addNoteText('Hello Redux!'))
+
+        console.log(store.getState());
+        
+        {/* 
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////
+
+        Redux: Use Middleware to Handle Asynchronous Actions
+
+            So far these challenges have avoided discussing asynchronous actions, but they are an unavoidable part of web development. 
+            At some point we'll need to call asynchronous endpoints in our Redux app, so how do we handle these types of requests? 
+            Redux provides middleware designed specifically for this purpose, called Redux Thunk middleware. 
+            Here's a brief description how to use this with Redux.
+
+            To include Redux Thunk middleware, we pass it as an argument to Redux.applyMiddleware(). 
+            This statement is then provided as a second optional parameter to the createStore() function. 
+            Take a look at the code at the bottom of the editor to see this. 
+            Then, to create an asynchronous action, we return a function in the action creator that takes dispatch as an argument. 
+            Within this function, we can dispatch actions and perform asynchronous requests.
+
+            In this example, an asynchronous request is simulated with a setTimeout() call. 
+            It's common to dispatch an action before initiating any asynchronous behavior so that your application state knows 
+            that some data is being requested (this state could display a loading icon, for instance). 
+            Then, once we receive the data, we dispatch another action which carries the data as a payload along with information that the action is completed.
+
+            Remember that we're passing dispatch as a parameter to this special action creator. 
+            This is what we'll use to dispatch our actions, we simply pass the action directly to dispatch and the middleware takes care of the rest.
+ 
+        */}
+
+        const REQUESTING_DATA = 'REQUESTING_DATA';
+        const RECEIVED_DATA = 'RECEIVED_DATA';
+
+        var requestingData = () => {
+            return {
+                type: REQUESTING_DATA
+            }
+        };
+        
+        var receivedData = () => {
+            return {
+                type: RECEIVED_DATA
+            }
+        };
+
+        var handleAsync = () => {
+            return function(dispatch) {
+                dispatch(requestingData);
+                setTimeout(function() {
+                    let data = {
+                        users: ['Jeff', 'William', 'Alice']
+                    }
+                    dispatch(receivedData(data));                    
+                }, 2500);
+            }
+        }
+
+        defaultState = {
+            fetching: false,
+            users: []
+        }
+
+        var asyncDataReducer = (state = defaultState, action) => {
+            switch (action.type) {
+                case REQUESTING_DATA: 
+                    return {
+                        fetching: true,
+                        users: []
+                    }
+                    break;
+                case RECEIVED_DATA: 
+                    return {
+                        fetching: false,
+                        users: action.users
+                    }
+                    break;
+                default: 
+                    return state;
+            }
+        }
+
+        store = Redux.createStore(
+            asyncDataReducer,
+            Redux.applyMiddleware(ReduxThunk.default)
+        );
+
+        {/* 
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////
+
+        Redux: Write a Counter with Redux
+
+            Now we've learned all the core principles of Redux! 
+            We've seen how to create actions and action creators, create a Redux store, 
+            dispatch our actions against the store, and design state updates with pure reducers. 
+            We've even seen how to manage complex state with reducer composition and handle asynchronous actions. 
+            These examples are simplistic, but these concepts are the core principles of Redux. 
+            The next challenges cover some of the details regarding state immutability, but first, here's a review of everything we've learned so far.
+ 
+        */}
+        
+        counterReducer = (state = 0, action) => {
+            switch (action.type) {
+                case INCREMENT: 
+                    return state + 1;
+                    break;
+                case DECREMENT: 
+                    return state - 1;
+                    break;
+                default:
+                    return state;
+            };
+        }
+
+        var incAction = () => { return { type: INCREMENT } };
+        var decAction = () => { return { type: DECREMENT } };
+        store = Redux.createStore(counterReducer);
+
+        {/* 
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////
+
+        Redux: Never Mutate State
+
+            These final challenges describe several methods of enforcing the key principle of state immutability in Redux. 
+            Immutable state means that we never modify state directly, instead, we return a new copy of state.
+
+            If we took a snapshot of the state of a Redux app over time, we would see something like state 1, state 2, state 3,state 4, ... 
+            and so on where each state may be similar to the last, but each is a distinct piece of data. 
+            This immutability, in fact, is what provides such features as time-travel debugging that we may have heard about.
+
+            Redux does not actively enforce state immutability in its store or reducers, that responsibility falls on the programmer. 
+            Fortunately, JavaScript (especially ES6) provides several useful tools we can use to enforce the immutability of our state, 
+            whether it is a string, number, array, or object. 
+            Note that strings and numbers are primitive values and are immutable by nature. 
+            In other words, 3 is always 3. 
+            You cannot change the value of the number 3. 
+            An array or object, however, is mutable. 
+            In practice, our state will probably consist of an array or object, as these are useful data structures for representing many types of information.
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////
+
+        Redux: Use the Spread Operator on Arrays
+
+            One solution from ES6 to help enforce state immutability in Redux is the spread operator: .... 
+            The spread operator has a variety of applications, 
+            one of which is well-suited to the previous challenge of producing a new array from an existing array. 
+            This is relatively new, but commonly used syntax. 
+            For example, if we have an array myArray and write:
+
+                let newArray = [...myArray];
+
+            newArray is now a clone of myArray. 
+            Both arrays still exist separately in memory. 
+            If you perform a mutation like newArray.push(5), myArray doesn't change. 
+            The ... effectively spreads out the values in myArray into a new array. 
+            To clone an array but add additional values in the new array, we could write 
+                let newArray = [...myArray, 'new value']
+            This would return a new array composed of the values in myArray and the string 'new value' as the last value. 
+            The spread syntax can be used multiple times in array composition like this, but it's important to note that it only makes a shallow copy of the array. 
+            That is to say, it only provides immutable array operations for one-dimensional arrays.
+
+        */}
+        
+        const ADD_TO_DO = 'ADD_TO_DO'
+        var todos = [
+            'Go to the store',
+            'Clean the house',
+            'Cook dinner',
+            'Learn to code',
+        ];
+
+        var immutableReducer = (state = todos, action) => {
+            switch(action.type) {
+                case ADD_TO_DO: 
+                    return [...state, action.todo];
+                    break;
+                default: 
+                    return state;
+            }
+        }
+
+        var addToDo = (todo) => {
+            return {
+                type: ADD_TO_DO,
+                todo: todo
+            }
+        }
+
+        store = Redux.createStore(immutableReducer);
+        console.log("\nNever mutate state!")
+        console.log(store.getState())
+
+        store.dispatch(addToDo('Learn React'))
+        console.log(store.getState())
+
+        store.dispatch(addToDo('Maybe sleep a bit'))
+        console.log(store.getState()) 
+
+        {/* 
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////
+
+        Redux: Remove an Item from an Array
+
+            Time to practice removing items from an array. 
+            The spread operator can be used here as well. 
+            Other useful JavaScript methods include slice() and concat().
+
+        */}
+        
+        immutableReducer = (state = [0,1,2,3,4,5], action) => {
+            switch (action.type) {
+                case 'REMOVE_ITEM':
+                    let i = action.index;
+                    let j = state.length;
+                    return [...state.slice(0, i), ...state.slice(i+1,j)];
+                    break;
+                default:
+                    return state;
+            }
+        }
+        var removeItem = (index) => {
+            return {
+                type: 'REMOVE_ITEM',
+                index
+            }
+        }
+
+        console.log("\nHere's the default immutable state");
+        store = Redux.createStore(immutableReducer);
+        console.log(store.getState());
+
+        console.log("Let's remove 2 :")
+        store.dispatch(removeItem(2));
+        console.log(store.getState());
+
+        console.log("And now let's remove 4 :")
+        store.dispatch(removeItem(3));
+        console.log(store.getState());
+
+        {/* 
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////
+
+        Redux: Copy an Object with Object.assign
+
+            The last several challenges worked with arrays, but there are ways to help enforce state immutability when state is an object, too. 
+            A useful tool for handling objects is the Object.assign() utility. 
+            Object.assign() takes a target object and source objects and maps properties from the source objects to the target object. 
+            Any matching properties are overwritten by properties in the source objects. 
+            This behavior is commonly used to make shallow copies of objects by passing an empty object as the first argument followed by the object(s) we want to copy. 
+            Here's an example:
+
+                const newObject = Object.assign({}, obj1, obj2);
+
+            This creates newObject as a new object, which contains the properties that currently exist in obj1 and obj2.
+
+        */}
+
+        defaultState = {
+            user: 'CamperBot',
+            status: 'offline',
+            friends: '732,982',
+            community: 'freeCodeCamp'
+        };
+
+        immutableReducer = (state = defaultState, action) => {
+            switch(action.type){
+                case 'ONLINE': 
+                    let newObject = Object.assign({}, state);
+                    newObject.status = 'online' 
+                    return newObject;
+                    break;
+                default:   
+                    return state;
+            }
+        }
+
+        var wakeUp = () => {
+            return {
+                type: 'ONLINE'
+            }
+        };
+
+        console.log("\nFinally, here is a immutable state based on an object :")
+        store = Redux.createStore(immutableReducer);
+        console.log(store.getState())
+
+        store.dispatch(wakeUp());
+        console.log(store.getState());
 
     </script>
 
