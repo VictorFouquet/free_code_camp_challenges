@@ -1,0 +1,317 @@
+.bg-1 {
+  opacity: 1;
+  background: linear-gradient(#9198e5, #f0c5c5);
+}
+
+.text-color-1 {
+  color: #c3b69b;
+}
+
+.button-color-1 {
+  background: #c3b69b;
+  border: #c3b69b solid 2px;
+  color: white;
+}
+
+.button-color-1:active {
+  color: #c3b69b;
+  background-color: white;
+}
+
+.button-color-1:hover {
+  background: #a79d89;
+}
+
+.bg-2 {
+  opacity: 1;
+  background: linear-gradient(#7cdd79, #e6c964);
+}
+
+.text-color-2 {
+  color: #e6c2c2;
+}
+
+.button-color-2 {
+  background: #e6c2c2;
+  border: #e6c2c2 solid 2px;
+  color: white;
+}
+
+.button-color-2:active {
+  color: #e6c2c2;
+  background-color: white;
+}
+
+.button-color-2:hover {
+  background: #cfabab;
+}
+
+.bg-3 {
+  opacity: 1;
+  background: linear-gradient(#ecaeae, #a2bfec);
+}
+
+.text-color-3 {
+  color: #b3c070;
+}
+
+.button-color-3 {
+  background: #b3c070;
+  border: #b3c070 solid 2px;
+  color: white;
+}
+
+.button-color-3:active {
+  color: #b3c070;
+  background-color: white;
+}
+
+.button-color-3:hover {
+  background: #a0ad5b;
+}
+
+.bg-4 {
+  opacity: 1;
+  background: linear-gradient(#95dae6, #e6bb64);
+}
+
+.text-color-4 {
+  color: #e0acd4;
+}
+
+.button-color-4 {
+  background: #e0acd4;
+  border: #e0acd4 solid 2px;
+  color: white;
+}
+
+.button-color-4:active {
+  color: #e0acd4;
+  background-color: white;
+}
+
+.button-color-4:hover {
+  background: #ccacc5;
+}
+
+.bg-5 {
+  opacity: 1;
+  background: linear-gradient(#fb9090, #ade9de);
+}
+
+.text-color-5 {
+  color: #b6bc91;
+}
+
+.button-color-5 {
+  background: #b6bc91;
+  border: #b6bc91 solid 2px;
+  color: white;
+}
+
+.button-color-5:active {
+  color: #b6bc91;
+  background-color: white;
+}
+
+.button-color-5:hover {
+  background: #a3a87d;
+}
+
+.bg-6 {
+  opacity: 1;
+  background: linear-gradient(#ffcaf2, #c7eaed);
+}
+
+.text-color-6 {
+  color: #a1a6cc;
+}
+
+.button-color-6 {
+  background: #a1a6cc;
+  border: #a1a6cc solid 2px;
+  color: white;
+}
+
+.button-color-6:active {
+  color: #a1a6cc;
+  background-color: white;
+}
+
+.button-color-6:hover {
+  background: #9298c2;
+}
+
+.bg-7 {
+  opacity: 1;
+  background: linear-gradient(#f6f5a2, #e8cef0);
+}
+
+.text-color-7 {
+  color: #a7a7cf;
+}
+
+.button-color-7 {
+  background: #a7a7cf;
+  border: #a7a7cf solid 2px;
+  color: white;
+}
+
+.button-color-7:active {
+  color: #a7a7cf;
+  background-color: white;
+}
+
+.button-color-7:hover {
+  background: #9393b1;
+}
+
+.bg-8 {
+  opacity: 1;
+  background: linear-gradient(#e0b794, #cef0df);
+}
+
+.text-color-8 {
+  color: #adbae1;
+}
+
+.button-color-8 {
+  background: #adbae1;
+  border: #adbae1 solid 2px;
+  color: white;
+}
+
+.button-color-8:active {
+  color: #adbae1;
+  background-color: white;
+}
+
+.button-color-8:hover {
+  background: #9da9cc;
+}
+
+.bg-9 {
+  opacity: 1;
+  background: linear-gradient(#b6a9ec, #c9e4cc);
+}
+
+.text-color-9 {
+  color: #d5a485;
+}
+
+.button-color-9 {
+  background: #d5a485;
+  border: #d5a485 solid 2px;
+  color: white;
+}
+
+.button-color-9:active {
+  color: #d5a485;
+  background-color: white;
+}
+
+.button-color-9:hover {
+  background: #bea392;
+}
+
+.bg-10 {
+  opacity: 1;
+  background: linear-gradient(#b6f6a2, #efb6b6);
+}
+
+.text-color-10 {
+  color: #bf94e1;
+}
+
+.button-color-10 {
+  background: #bf94e1;
+  border: #bf94e1 solid 2px;
+  color: white;
+}
+
+.button-color-10:active {
+  color: #bf94e1;
+  background-color: white;
+}
+
+.button-color-10:hover {
+  background: #a486bb;
+}
+
+body {
+  height: 900px;
+  background: linear-gradient(#e0b794, #cef0df);
+}
+
+#quote-box {
+  margin: 200px auto 30px auto;
+  border-radius: 5px;
+  background-color: white;
+  width: 20%;
+  height: 350px;
+  min-width: 200px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.bg {
+  height: 900px;
+  background: linear-gradient(#e0b794, #cef0df);
+}
+
+#text {
+  font-family: "Karla", sans-serif;
+  margin-left: 20px;
+}
+
+#author {
+  font-family: "Roboto Condensed", sans-serif;
+  margin: auto 0 0 auto;
+}
+
+#new-quote {
+  font-family: "Roboto Condensed", sans-serif;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+#new-quote:active {
+  background: white;
+}
+
+#interact {
+  margin: 20px 0 0 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#twitter-icon {
+  position: relative;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 14px;
+  padding-right: 14px;
+  border-radius: 3px;
+  color: white;
+}
+
+a {
+  color: white;
+}
+
+#text-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+p {
+  font-family: "Karla", sans-serif;
+  margin-top: 0px;
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+
+/*# sourceMappingURL=styles.css.map */

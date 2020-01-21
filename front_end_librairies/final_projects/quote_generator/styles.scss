@@ -1,0 +1,101 @@
+$backgrounds: (
+    linear-gradient(#9198e5, #f0c5c5), 
+    linear-gradient(#7cdd79, #e6c964), 
+    linear-gradient(#ecaeae, #a2bfec), 
+    linear-gradient(#95dae6, #e6bb64),
+    linear-gradient(#fb9090, #ade9de),
+    linear-gradient(#ffcaf2, #c7eaed),
+    linear-gradient(#f6f5a2, #e8cef0),
+    linear-gradient(#e0b794, #cef0df),
+    linear-gradient(#b6a9ec, #c9e4cc),
+    linear-gradient(#b6f6a2, #efb6b6)
+);
+$maincolors: #c3b69b #e6c2c2 #b3c070 #e0acd4 #b6bc91 #a1a6cc #a7a7cf #adbae1 #d5a485 #bf94e1;
+$seccolors: #a79d89 #cfabab #a0ad5b #ccacc5 #a3a87d #9298c2 #9393b1 #9da9cc #bea392 #a486bb;
+$x: 1;
+
+@while $x < 11 {
+    .bg-#{$x} {opacity:1; background: nth($backgrounds, $x);}
+    .text-color-#{$x} {color: nth($maincolors, $x);}
+    .button-color-#{$x} {background: nth($maincolors, $x); border: nth($maincolors, $x) solid 2px; color: white}
+    .button-color-#{$x}:active {color: nth($maincolors, $x); background-color: white;}
+    .button-color-#{$x}:hover {background: nth($seccolors, $x)}
+    $x: $x + 1;
+}
+
+body {
+    height: 900px;
+    background: linear-gradient(#e0b794, #cef0df);
+  }
+  
+  #quote-box {
+    margin: 200px auto 30px auto;
+    border-radius: 5px;
+    background-color: white;
+    width: 20%;
+    height: 350px;
+    min-width: 200px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column
+  }
+  
+  .bg {
+    height: 900px;
+    background: linear-gradient(#e0b794, #cef0df);
+  }
+  
+  #text {
+    font-family: 'Karla', sans-serif;
+    margin-left: 20px;
+  }
+  
+  #author {
+    font-family: 'Roboto Condensed', sans-serif;
+    margin: auto 0 0 auto;
+  }
+  
+  #new-quote {
+    font-family: 'Roboto Condensed', sans-serif;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+  
+  
+  #new-quote:active {
+    background: white
+  }
+  
+  #interact {
+    margin: 20px 0 0 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between
+  }
+  
+  #twitter-icon {
+    position: relative;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 14px;
+    padding-right: 14px;
+    border-radius: 3px;
+    color: white
+  }
+  
+  a {
+    color:white
+  }
+  
+  #text-container {
+    display:flex;
+    justify-content: space-between
+  }
+  
+  p{
+    font-family: 'Karla', sans-serif;
+    margin-top: 0px;
+    display: flex;
+    justify-content: center;
+    color: white
+  }

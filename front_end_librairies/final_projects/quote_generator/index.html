@@ -1,0 +1,170 @@
+<html>
+    <head>
+            <link href="styles.css" rel="stylesheet">
+    </head>
+    
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+
+    <script src="https://fb.me/react-with-addons-15.0.0.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/3.0.4/redux.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-redux/4.4.5/react-redux.min.js"></script>
+
+    <script src="https://fb.me/react-dom-0.14.0.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+
+    <script src="https://kit.fontawesome.com/3e90c18dcd.js" crossorigin="anonymous"></script>
+
+    <div id="app"></div>
+
+    <script type="text/babel">
+
+    const QUOTES = [{
+    "quoteText": "Genius is one percent inspiration and ninety-nine percent perspiration.",
+    "quoteAuthor": "Thomas Edison"
+    },{
+    "quoteText": "You can observe a lot just by watching.",
+    "quoteAuthor": "Yogi Berra"
+    }, {
+    "quoteText": "A house divided against itself cannot stand.",
+    "quoteAuthor": "Abraham Lincoln"
+    }, {
+    "quoteText": "Difficulties increase the nearer we get to the goal.",
+    "quoteAuthor": "Johann Wolfgang von Goethe"
+    }, {
+    "quoteText": "Fate is in your hands and no one elses",
+    "quoteAuthor": "Byron Pulsifer"
+    }, {
+    "quoteText": "Be the chief but never the lord.",
+    "quoteAuthor": "Lao Tzu"
+    }, {
+    "quoteText": "Nothing happens unless first we dream.",
+    "quoteAuthor": "Carl Sandburg"
+    }, {
+    "quoteText": "Well begun is half done.",
+    "quoteAuthor": "Aristotle"
+    }, {
+    "quoteText": "Life is a learning experience, only if you learn.",
+    "quoteAuthor": "Yogi Berra"
+    }, {
+    "quoteText": "Self-complacency is fatal to progress.",
+    "quoteAuthor": "Margaret Sangster"
+    }]
+
+    var bg_colors = [];
+    var button_colors = [];
+    var text_colors = [];
+
+    for (let i = 1; i < 11; i++){
+        bg_colors.push("bg-"+ i);
+        button_colors.push("button-color-" + i);
+        text_colors.push("text-color-" + i)
+    }
+
+    class Quote extends React.Component{
+        constructor(props){
+            super(props);
+        }
+        render(){
+            return (
+            <div className={this.props.color} id="text-container">
+                <i className="fas fa-quote-left fa-2x"></i>
+                <h1 id="text" >{this.props.quote}</h1>
+            </div>
+            )
+        }
+    }
+
+    class Author extends React.Component {
+        constructor(props){
+            super(props)
+        }
+        render(){
+            return <p id="author" className={this.props.color}>- {this.props.author}</p>
+        }
+    }
+
+    class TwitterIcon extends React.Component {
+    constructor(props) {
+        super(props)
+    }
+    render(){
+        var uri = "https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=" + encodeURIComponent(this.props.quote + " (" + this.props.author + ")")
+        console.log(uri)
+        return (
+        <a id="twitter-icon" className={this.props.color} href={uri} title="Tweet this quote!" target="_blank">
+            <div id="tweet-quote">
+                <i className="fab fa-twitter"></i>
+            </div>
+        </a>
+        )
+    }
+    }
+    class QuoteBox extends React.Component {
+        constructor(props){
+            super(props)
+            let index = Math.floor(Math.random() * QUOTES.length)
+            this.state = {
+                index: index,
+                quote: QUOTES[index].quoteText,
+                author: QUOTES[index].quoteAuthor
+            }
+            this.getQuote = this.getQuote.bind(this);
+        }
+    
+    getQuote(){
+        let i = Math.floor(Math.random() * QUOTES.length);
+        while (i === this.state.index) {
+            i = Math.floor(Math.random() * QUOTES.length);
+        }
+        document.body.className = bg_colors[i]
+        this.setState({
+            index: i,
+            quote: QUOTES[i].quoteText,
+            author: QUOTES[i].quoteAuthor
+        });
+    }
+
+    render(){
+        return (
+        <div>
+            <div id="quote-box">
+                <Quote color={text_colors[this.state.index]} quote={this.state.quote}/>
+                <Author color={text_colors[this.state.index]} author={this.state.author}/>
+                <div id="interact">
+                    <TwitterIcon 
+                        color={button_colors[this.state.index]} 
+                        quote={this.state.quote} 
+                        author={this.state.author}/>
+                    <button 
+                        className={button_colors[this.state.index]}
+                        id="new-quote"
+                        onClick={this.getQuote}>New Quote
+                    </button>
+                </div>  
+            </div>
+        </div>
+        );
+    }
+    }
+
+    class App extends React.Component{
+        constructor(props){
+            super(props)
+        }
+        render(){
+            return <QuoteBox />
+        }
+    }
+
+    ReactDOM.render(<App />, document.getElementById("app"))
+
+    </script>
+
+</html>
