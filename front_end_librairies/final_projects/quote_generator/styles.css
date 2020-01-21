@@ -238,6 +238,11 @@
   background: #a486bb;
 }
 
+.bg {
+  height: 900px;
+  background: linear-gradient(#e0b794, #cef0df);
+}
+
 body {
   height: 900px;
   background: linear-gradient(#e0b794, #cef0df);
@@ -253,11 +258,6 @@ body {
   padding: 30px;
   display: flex;
   flex-direction: column;
-}
-
-.bg {
-  height: 900px;
-  background: linear-gradient(#e0b794, #cef0df);
 }
 
 #text {
@@ -297,7 +297,13 @@ body {
   color: white;
 }
 
+#tweet-quote {
+  margin-top: 11px;
+}
+
 a {
+  height: 40px;
+  line-height: 40px;
   color: white;
 }
 

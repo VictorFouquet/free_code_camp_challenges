@@ -23,12 +23,17 @@ $x: 1;
     $x: $x + 1;
 }
 
+.bg {
+    height: 900px;
+    background: linear-gradient(#e0b794, #cef0df);
+}
+
 body {
     height: 900px;
     background: linear-gradient(#e0b794, #cef0df);
   }
   
-  #quote-box {
+#quote-box {
     margin: 200px auto 30px auto;
     border-radius: 5px;
     background-color: white;
@@ -38,42 +43,36 @@ body {
     padding: 30px;
     display: flex;
     flex-direction: column
-  }
-  
-  .bg {
-    height: 900px;
-    background: linear-gradient(#e0b794, #cef0df);
-  }
-  
-  #text {
+}
+
+#text {
     font-family: 'Karla', sans-serif;
     margin-left: 20px;
-  }
-  
-  #author {
+}
+
+#author {
     font-family: 'Roboto Condensed', sans-serif;
     margin: auto 0 0 auto;
-  }
-  
-  #new-quote {
+}
+
+#new-quote {
     font-family: 'Roboto Condensed', sans-serif;
     padding: 10px 20px;
     border-radius: 5px;
-  }
-  
-  
-  #new-quote:active {
+}
+
+#new-quote:active {
     background: white
-  }
-  
-  #interact {
+}
+
+#interact {
     margin: 20px 0 0 0;
     display: flex;
     flex-direction: row;
     justify-content: space-between
-  }
-  
-  #twitter-icon {
+}
+
+#twitter-icon {
     position: relative;
     height: 40px;
     line-height: 40px;
@@ -81,21 +80,27 @@ body {
     padding-right: 14px;
     border-radius: 3px;
     color: white
-  }
-  
-  a {
+}
+
+#tweet-quote {
+    margin-top: 11px
+}
+
+a {
+    height: 40px;
+    line-height: 40px;
     color:white
-  }
-  
-  #text-container {
+}
+
+#text-container {
     display:flex;
     justify-content: space-between
-  }
-  
-  p{
+}
+
+p{
     font-family: 'Karla', sans-serif;
     margin-top: 0px;
     display: flex;
     justify-content: center;
     color: white
-  }
+}
