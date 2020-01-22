@@ -1,7 +1,7 @@
 ## Front End Libraries Projects - Build a Markdown Previewer
 
 
-**See my solution here : https://codepen.io/victorfouquet/full/wvBRXOw **
+See my solution here : https://codepen.io/victorfouquet/full/wvBRXOw
 
 
 ---
