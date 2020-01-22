@@ -14,29 +14,30 @@ const renderer = new marked.Renderer();
 renderer.link = ( href, title, text ) => `<a target="_blank" href="${ href }" title="${ title }">${ text }</a>`;
 
 class MarkdownViewer extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            inputValue: this.props.preview,
-        };
-        this.handleChange = this.handleChange.bind(this);
+  constructor(props) {
+    super(props);
+    this.state = {
+        inputValue: this.props.preview,
+    };
+    this.handleChange = this.handleChange.bind(this);
     }
-
-    handleChange(event) {
-        this.ListeningStateChangedEvent({
-            inputValue: event.target.value
-        })
+    
+    handleChange(event){
+    this.setState({
+        inputValue: event.target.value
+    });
     }
     
     render(){
-        return(
-            <div>
-                <Editor
-                    input = { this.state.inputValue }
-                    handleChange = { this.handleChange } />
-                <Preview input={this.state.inputValue}/>
-            </div>)
-    }
+    return (
+        <div>
+        <Editor 
+            input={this.state.inputValue} 
+            handleChange={this.handleChange} />
+        <Preview input={this.state.inputValue}/>
+        </div>
+    )
+  }
 }
 
 export default MarkdownViewer;

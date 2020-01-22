@@ -1,26 +1,25 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  z-index: 0;
+  padding-top: 100px;
+  background-color: #787777;
+  background-image: url("https://www.transparenttextures.com/patterns/white-plaster.png");
+
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#adaptive-container {
+  display: flex; 
+  justify-content: center
 }
 
 #editor-container {
   background-color: black;
   padding: 1px 17px 15px 12px;
-  width: 33%;
   min-width: 250px;
-  height: 300px;
   margin: auto;
   border-radius: 2px;
+  display: inline-block;
 }
+
 
 #editor-title{
   font-family: 'PT Sans', sans-serif;
@@ -32,7 +31,8 @@ code {
 #editor{
   color: black;
   font-family: 'Special Elite', cursive;
-  width: 100%;
+  width: 600px;
+  min-width: 220px;
   height: 255px;
   margin: auto;
   background-color: #e1e1e1;
@@ -41,7 +41,7 @@ code {
 
 #preview-container {
   background-color: black;
-  padding: 10px;
+  padding: 10px 10px 17px;
   width: 47%;
   min-width: 270px;
   margin: 20px auto;
