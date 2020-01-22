@@ -1,0 +1,65 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+#editor-container {
+  background-color: black;
+  padding: 1px 17px 15px 12px;
+  width: 33%;
+  min-width: 250px;
+  height: 300px;
+  margin: auto;
+  border-radius: 2px;
+}
+
+#editor-title{
+  font-family: 'PT Sans', sans-serif;
+  text-align: right;
+  margin: 10px;
+  color:white;
+}
+
+#editor{
+  color: black;
+  font-family: 'Special Elite', cursive;
+  width: 100%;
+  height: 255px;
+  margin: auto;
+  background-color: #e1e1e1;
+  background-image: url("https://www.transparenttextures.com/patterns/cardboard.png");
+}
+
+#preview-container {
+  background-color: black;
+  padding: 10px;
+  width: 47%;
+  min-width: 270px;
+  margin: 20px auto;
+  border-radius: 2px;
+}
+
+#preview-title{
+  font-family: 'PT Sans', sans-serif;
+  text-align: right;
+  margin: 6px 20px 14px;
+  color:white;
+}
+
+#preview{
+  font-family: 'Orbitron', sans-serif;
+  padding: 2%;
+  color: #d7ca67;
+  width: 94%;
+  margin: auto;
+  background-color: #1b1b1b;
+}
