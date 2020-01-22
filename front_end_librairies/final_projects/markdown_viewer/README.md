@@ -1,4 +1,6 @@
 ## Front End Libraries Projects - Build a Markdown Previewer
+
+See my solution here : https://codepen.io/victorfouquet/full/wvBRXOw 
 ---
 **Objective:** Build a CodePen.io app that is functionally similar to this : (https://codepen.io/freeCodeCamp/full/GrZVVO).
 
@@ -20,4 +22,4 @@ You can use any mix of HTML, JavaScript, CSS, Bootstrap, SASS, React, Redux, and
 
 -Optional Bonus (you do not need to make this test pass): My markdown previewer interprets carriage returns and renders them as br (line break) elements.
 
-**_See my solution here : https://codepen.io/victorfouquet/full/wvBRXOw _**
+See my solution here : https://codepen.io/victorfouquet/full/wvBRXOw 
